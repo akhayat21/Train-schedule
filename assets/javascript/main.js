@@ -1,3 +1,7 @@
+//I bought you both tickets to see the 76ers and OKC, but you're all invited to watch the magic game on sunday
+
+
+
 var newTrain = {
   name: "",
   destination: "",
@@ -64,7 +68,7 @@ database.ref().on("child_added", function(childSnapshot) {
   console.log(temp2)
   var temp3 = moment(temp1,"HH:mm").diff(moment(temp2,"HH:mm"),"minutes");
   console.log(temp3);
-  var temp4 = trainFreq - (temp3 % trainFreq);
+  var temp4 = (temp3 % trainFreq);
   console.log(temp4);
   var temp5 = moment(temp2,"HH:mm").add(moment(temp4,"mm"));
   
