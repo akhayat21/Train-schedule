@@ -1,0 +1,28 @@
+.jumbotron{
+background-color: maroon; 
+margin-left: 10%; 
+margin-right: 10%; 
+color: yellow;
+text-align: center;
+}
+
+.list-group{
+margin-left: 10%; 
+margin-right: 10%; 
+color: black;
+text-align: left;
+margin-top: 40px;
+}
+.active{
+    background-color: maroon;
+    color: yellow;
+
+}
+
+.heading{
+    font-weight: 500;
+}
+
+.btn{
+    margin-bottom: 25px;
+}
