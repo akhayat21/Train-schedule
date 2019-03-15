@@ -23,7 +23,7 @@ $("#addTrain").on("click", function (event) {
 
   var trainName = $("#trainName").val().trim();
   var trainDestination = $("#Destination").val().trim();
-  var trainStart = moment($("#firstTrain").val().trim(), "hmm").format("HH:MM");
+  var trainStart = $("#firstTrain").val().trim();
   var trainFreq = $("#frequency").val().trim();
 
   newTrain = {
@@ -58,18 +58,23 @@ database.ref().on("child_added", function(childSnapshot) {
   console.log(trainStart);
   console.log(trainFreq);
 
-  var currTime = moment().endOf(trainStart).fromNow(); 
+  var temp1 = trainStart
+  var temp2 = moment().format('LT');
+  console.log(temp1)
+  console.log(temp2)
+  var temp3 = moment(temp1,"HH:mm").diff(moment(temp2,"HH:mm"),"minutes");
+  console.log(temp3);
+  var temp4 = trainFreq - (temp3 % trainFreq);
+  console.log(temp4);
+  var temp5 = moment(temp2,"HH:mm").add(moment(temp4,"mm"));
   
-  
-  
-  console.log(currTime);
   
   var newRow = $("<div class ='row'>").append(
     $("<div class='col-md-3'>").text(trainName),
     $("<div class='col-md-3'>").text(trainDestination),
     $("<div class='col-md-2'>").text(trainFreq),
-   // $("<div class='col-md-2'>").text(empMonths),
-    //$("<div class='col-md-2'>").text(empRate),
+    $("<div class='col-md-2'>").text(temp5),
+    $("<div class='col-md-2'>").text(temp4),
   );
 
   ($("#list")).append(newRow);
